@@ -17,6 +17,7 @@ pipeline{
         sshagent(['dev-server']) {
             sh """
               scp -o StrictHostKeyChecking=no /target/myweb.war ec2user@172.31.12.214:/var/lib/tomcat9/webapps/ 
+              ssh ec2user@172.31.12.214 systemctl restart tomcat9
             """"
         }
       }
